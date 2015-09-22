@@ -2,8 +2,8 @@ module Main where
 
 validate :: [Int] -> Bool
 validate sin
-  | length sin /= 6 = False
-  | otherwise = (sum . map (`mod` 10) $ zipWith (*) sin multNum) `mod` 10 == 0
+  | length sin /= 9 = False
+  | otherwise = (sum . map (sum . map (read . return) . show) $ zipWith (*) sin multNum) `mod` 10 == 0
   where multNum = [1,2,1,2,1,2,1,2,1]
 
 main :: IO ()
